@@ -1,6 +1,6 @@
-SECTION "HEADER", ROM0[$0100]
+SECTION "HEADER", ROM0[ADDR_HEADER]
     nop                                  ; [$0100 - $0103] Entry Point
-    jp   $0150
+    jp   ADDR_ENTRY
     DB   $CE,$ED,$66,$66,$CC,$0D,$00,$0B ; [$0104 - $0133] Nintendo Logo
     DB   $03,$73,$00,$83,$00,$0C,$00,$0D
     DB   $00,$08,$11,$1F,$88,$89,$00,$0E
