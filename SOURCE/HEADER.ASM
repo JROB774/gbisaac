@@ -1,3 +1,5 @@
+; ==============================================================================
+
 SECTION "HEADER", ROM0[ADDR_HEADER]
     nop                                  ; [$0100 - $0103] Entry Point
     jp   ADDR_ENTRY
@@ -20,3 +22,5 @@ SECTION "HEADER", ROM0[ADDR_HEADER]
     DB   $00                             ; [$014C        ] ROM Version Number
     DB   $FF                             ; [$014D        ] Header Checksum
     DW   $FFFF                           ; [$014E - $014F] Global Checksum
+
+; ==============================================================================
