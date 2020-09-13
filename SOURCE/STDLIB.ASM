@@ -1,21 +1,18 @@
 ; ==============================================================================
-; Title:   MAIN.ASM
-; Desc:    Main entry-point and game loop for the ROM.
+; Title:   STDLIB.ASM
+; Desc:    A variety of general-purpose sub-routines.
 ; Author:  Joshua Robertson
 ; License: MIT License
 ; ==============================================================================
 
 ; ==============================================================================
 
-INCLUDE "DEFINE.ASM"
-INCLUDE "STDLIB.ASM"
-INCLUDE "HEADER.ASM"
+SECTION "STDLIB", ROMX
 
-SECTION "MAIN", ROM0[ADDR_ENTRY]
-
-EntryPoint:
-.loop
-    call WaitVBlank
-    jr   .loop
+WaitVBlank:
+    ld   a,[LCD_LINE_Y]
+    cp   LCD_HEIGHT
+    jr   nz,WaitVBlank
+    ret
 
 ; ==============================================================================
