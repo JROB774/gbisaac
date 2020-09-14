@@ -10,8 +10,8 @@
 SECTION "STDLIB", ROMX
 
 WaitVBlank:
-    ld   a,[LCD_LINE_Y]
-    cp   LCD_HEIGHT
+    ld   a,[LYC]
+    cp   SCREEN_H
     jr   nz,WaitVBlank
     ret
 
