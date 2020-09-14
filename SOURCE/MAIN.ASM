@@ -16,6 +16,7 @@ SECTION "MAIN", ROM0[ADDR_ENTRY]
 ; ------------------------------------------------------------------------------
 ; This is the entry-point where the execution of our ROM begins.
 ; ------------------------------------------------------------------------------
+
 entrypoint:
     call waitvblank;        ; We want to disable the LCD so we can write into
     ld   a,[LCDC]           ; VRAM, so we wait until VBlank so we can do this.
