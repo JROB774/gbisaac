@@ -18,7 +18,7 @@ RomHeader:
     DB   $DC,$CC,$6E,$E6,$DD,$DD,$D9,$99
     DB   $BB,$BB,$67,$63,$6E,$0E,$EC,$CC
     DB   $DD,$DC,$99,$9F,$BB,$B9,$33,$3E
-    DB   "GBISAAC",$00,$00,$00,$00       ; [$0134 - $013E] ROM Title
+    DB   "GBISAAC",$00,$00,$00,$00       ; [$0134 - $013E] ROM Title (Padded)
     DB   "JROB"                          ; [$013F - $0142] Manufacturer Code
     DB   $00                             ; [$0143        ] CGB Flag
     DB   "JR"                            ; [$0144 - $0145] New Licensee Code

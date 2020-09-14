@@ -9,6 +9,9 @@
 
 SECTION "STDLIB", ROMX
 
+; ------------------------------------------------------------------------------
+; Halts execution until the system reaches the vertical blank.
+; ------------------------------------------------------------------------------
 WaitVBlank:
     ld   a,[LYC]
     cp   SCREEN_H
