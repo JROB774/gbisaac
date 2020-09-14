@@ -10,6 +10,58 @@
 SECTION "STDLIB", ROMX
 
 ; ------------------------------------------------------------------------------
+; Turns off the LCD display.
+; ------------------------------------------------------------------------------
+
+lcdoff:
+    call waitvblank;        ; Wait until VBlank so that we can turn off the LCD.
+    ld   a,[LCDC]
+    res  7,a                ; The flag to disable the LCD is at bit 7 of LCDC.
+    ld   [LCDC],a
+    ret
+
+; ------------------------------------------------------------------------------
+; Turns on the LCD display.
+; ------------------------------------------------------------------------------
+
+lcdon:
+    call waitvblank;        ; Wait until VBlank so that we can turn on the LCD.
+    ld   a,[LCDC]
+    set  7,a                ; The flag to enable the LCD is at bit 7 of LCDC.
+    ld   [LCDC],a
+    ret
+
+; ------------------------------------------------------------------------------
+; Turns off the system sound.
+; ------------------------------------------------------------------------------
+
+sndoff:
+    ld   a,[NR52]
+    res  7,a                ; The flag to disable sound is at bit 7 of NR52.
+    ld   [NR52],a
+    ret
+
+; ------------------------------------------------------------------------------
+; Turns on the system sound.
+; ------------------------------------------------------------------------------
+
+sndon:
+    ld   a,[NR52]
+    set  7,a                ; The flag to enable sound is at bit 7 of NR52.
+    ld   [NR52],a
+    ret
+
+; ------------------------------------------------------------------------------
+; Halts execution until the system reaches the vertical blank.
+; ------------------------------------------------------------------------------
+
+waitvblank:
+    ld   a,[LYC]            ; Check the current scan line begin drawn.
+    cp   SCREEN_H           ; Compare it to the height of the screen.
+    jr   nz,waitvblank      ; If past the screen height then continue.
+    ret
+
+; ------------------------------------------------------------------------------
 ; Based on the memcpy function from the C standard library.
 ; Copies one block of memory to another block of memory.
 ;
@@ -44,16 +96,6 @@ memset:
     ld   a,b                ; Check to see if there are still bytes to set by
     or   c                  ; comparing the upper and lower bytes using OR to
     jr   nz,memset          ; see if any bits are set. If so, then continue.
-    ret
-
-; ------------------------------------------------------------------------------
-; Halts execution until the system reaches the vertical blank.
-; ------------------------------------------------------------------------------
-
-waitvblank:
-    ld   a,[LYC]            ; Check the current scan line begin drawn.
-    cp   SCREEN_H           ; Compare it to the height of the screen.
-    jr   nz,waitvblank      ; If past the screen height then continue.
     ret
 
 ; ==============================================================================

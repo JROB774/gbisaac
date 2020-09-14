@@ -54,6 +54,20 @@ VRAM_SCREEN0  EQU $9800         ; [$9800-$9BFF] Background Tile Map
 VRAM_SCREEN1  EQU $9C00         ; [$9C00-$9FFF] Window Tile Map
 
 ; ------------------------------------------------------------------------------
+; PALETTE REGISTERS (W)
+; The bits of each register control the palette for backgrounds and objects.
+;
+; Bit 7-6 - Shade for Color %11
+; Bit 5-4 - Shade for Color %10
+; Bit 3-2 - Shade for Color %01
+; Bit 1-0 - Shade for Color %00
+; ------------------------------------------------------------------------------
+
+BGP           EQU $FF47         ; Background Palette Data
+OBP0          EQU $FF48         ; Object Palette 0 Data
+OBP1          EQU $FF49         ; Object Palette 1 Data
+
+; ------------------------------------------------------------------------------
 ; LCD CONTROL REGISTER (R/W)
 ; The bits control what elements are displayed on screen and how.
 ;
