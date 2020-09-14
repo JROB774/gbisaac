@@ -16,6 +16,7 @@ SECTION "MAIN", ROM0[ADDR_ENTRY]
 ; ------------------------------------------------------------------------------
 ; This is the entry-point where the execution of our ROM begins.
 ; ------------------------------------------------------------------------------
+
 entrypoint:
     call lcdoff             ; We disable the LCD so we can write into VRAM.
     call sndoff             ; We turn off sound to save the system's power.
