@@ -4,7 +4,7 @@
 
 *The original prototype was made for **[#GBJAM8](https://itch.io/jam/gbjam-8)** (a Game Boy themed game jam).*
 
----
+## Overview
 
 **The Binding of Isaac: Game Boy Edition** plans to be a *mostly* fully-featured demake of the original Binding of Isaac for
 the Nintendo Game Boy system.
