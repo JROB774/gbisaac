@@ -54,18 +54,50 @@ VRAM_SCREEN0  EQU $9800         ; [$9800-$9BFF] Background Tile Map
 VRAM_SCREEN1  EQU $9C00         ; [$9C00-$9FFF] Window Tile Map
 
 ; ------------------------------------------------------------------------------
-; PALETTE REGISTERS (W)
-; The bits of each register control the palette for backgrounds and objects.
+; P1/JOYP (R/W)
+; The bits are used to read the current state of the joypad.
 ;
-; Bit 7-6 - Shade for Color %11
-; Bit 5-4 - Shade for Color %10
-; Bit 3-2 - Shade for Color %01
-; Bit 1-0 - Shade for Color %00
+; Bit 7 - Not Used
+; Bit 6 - Not Used
+; Bit 5 - P15 Select Button Keys    (Set to 0 for Buttons)
+; Bit 4 - P14 Select Direction Keys (Set to 0 for D-Pad)
+; Bit 3 - P13 Input Down/Start      (0 = Pressed) (Read-Only)
+; Bit 2 - P12 Input Up/Select       (0 = Pressed) (Read-Only)
+; Bit 1 - P11 Input Left/B          (0 = Pressed) (Read-Only)
+; Bit 0 - P10 Input Right/A         (0 = Pressed) (Read-Only)
 ; ------------------------------------------------------------------------------
 
-BGP           EQU $FF47         ; Background Palette Data
-OBP0          EQU $FF48         ; Object Palette 0 Data
-OBP1          EQU $FF49         ; Object Palette 1 Data
+P1            EQU $FF00
+
+P1_5          EQU %00100000     ; Bit 5 - P15 Select Button Keys
+P1_4          EQU %00010000     ; Bit 4 - P14 Select Direction Keys
+P1_3          EQU %00001000     ; Bit 3 - P13 Input Down/Start (Read-Only)
+P1_2          EQU %00000100     ; Bit 2 - P12 Input Up/Select  (Read-Only)
+P1_1          EQU %00000010     ; Bit 1 - P11 Input Left/B     (Read-Only)
+P1_0          EQU %00000001     ; Bit 0 - P10 Input Right/A    (Read-Only)
+
+; ------------------------------------------------------------------------------
+; NR52 SOUND ON/OFF (R/W)
+; The bits control toggling sound on/off and display the sound status.
+;
+; Bit 7 - Toggle Sound On/Off
+; Bit 6 - Not Used
+; Bit 5 - Not Used
+; Bit 4 - Not Used
+; Bit 3 - Sound 4 On Flag (Read-Only)
+; Bit 2 - Sound 3 On Flag (Read-Only)
+; Bit 1 - Sound 2 On Flag (Read-Only)
+; Bit 0 - Sound 1 On Flag (Read-Only)
+; ------------------------------------------------------------------------------
+
+NR52          EQU $FF26
+
+NR52_OFF      EQU %00000000     ; Bit 7 - Toggle Sound On/Off
+NR52_ON       EQU %10000000     ; Bit 7 - Toggle Sound On/Off
+NR52_SOUND4   EQU $00001000     ; Bit 3 - Sound 4 On Flag (Read-Only)
+NR52_SOUND3   EQU $00000100     ; Bit 2 - Sound 3 On Flag (Read-Only)
+NR52_SOUND2   EQU $00000010     ; Bit 1 - Sound 2 On Flag (Read-Only)
+NR52_SOUND1   EQU $00000001     ; Bit 0 - Sound 1 On Flag (Read-Only)
 
 ; ------------------------------------------------------------------------------
 ; LCD CONTROL REGISTER (R/W)
@@ -109,23 +141,17 @@ LCDC_BGON     EQU %00000001     ; Bit 0 - BG Display Enable
 LYC           EQU $FF44
 
 ; ------------------------------------------------------------------------------
-; NR52 SOUND ON/OFF (R/W)
-; The bits control toggling sound on/off and display the sound status.
+; PALETTE REGISTERS (W)
+; The bits of each register control the palette for backgrounds and objects.
 ;
-; Bit 7 - Toggle Sound On/Off
-; Bit 3 - Sound 4 On Flag (Read-Only)
-; Bit 2 - Sound 3 On Flag (Read-Only)
-; Bit 1 - Sound 2 On Flag (Read-Only)
-; Bit 0 - Sound 1 On Flag (Read-Only)
+; Bit 7-6 - Shade for Color %11
+; Bit 5-4 - Shade for Color %10
+; Bit 3-2 - Shade for Color %01
+; Bit 1-0 - Shade for Color %00
 ; ------------------------------------------------------------------------------
 
-NR52          EQU $FF26
-
-NR52_OFF      EQU %00000000     ; Bit 7 - Toggle Sound On/Off
-NR52_ON       EQU %10000000     ; Bit 7 - Toggle Sound On/Off
-NR52_SOUND4   EQU $00001000     ; Bit 3 - Sound 4 On Flag (Read-Only)
-NR52_SOUND3   EQU $00000100     ; Bit 2 - Sound 3 On Flag (Read-Only)
-NR52_SOUND2   EQU $00000010     ; Bit 1 - Sound 2 On Flag (Read-Only)
-NR52_SOUND1   EQU $00000001     ; Bit 0 - Sound 1 On Flag (Read-Only)
+BGP           EQU $FF47         ; Background Palette Data
+OBP0          EQU $FF48         ; Object Palette 0 Data
+OBP1          EQU $FF49         ; Object Palette 1 Data
 
 ; ==============================================================================
