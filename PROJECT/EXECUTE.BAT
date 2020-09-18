@@ -2,8 +2,6 @@
 setlocal
 
 call PROJINFO.BAT
-pushd ..
-BGBEMU\bgb.exe BINARY\%Output%
-popd
+start ..\BGBEMU\bgb.exe -watch -rom ..\BINARY\%Output%
 
 endlocal
