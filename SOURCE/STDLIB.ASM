@@ -25,7 +25,6 @@ lcdoff:
 ; ------------------------------------------------------------------------------
 
 lcdon:
-    call waitvblank;        ; Wait until VBlank so that we can turn on the LCD.
     ld   a,[LCDC]
     set  7,a                ; The flag to enable the LCD is at bit 7 of LCDC.
     ld   [LCDC],a
@@ -53,10 +52,11 @@ sndon:
 
 ; ------------------------------------------------------------------------------
 ; Halts execution until the system reaches the vertical blank.
+; This should only be called if LCD is on, or flow will hang.
 ; ------------------------------------------------------------------------------
 
 waitvblank:
-    ld   a,[LYC]            ; Check the current scan line begin drawn.
+    ld   a,[LYC]            ; Check the current scan line being drawn.
     cp   SCREEN_H           ; Compare it to the height of the screen.
     jr   nz,waitvblank      ; If past the screen height then continue.
     ret
