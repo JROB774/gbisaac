@@ -8,6 +8,7 @@
 ; ==============================================================================
 
 INCLUDE "DEFINE.ASM"
+INCLUDE "DEBUG.ASM"
 INCLUDE "STDLIB.ASM"
 INCLUDE "JOYPAD.ASM"
 INCLUDE "HEADER.ASM"
