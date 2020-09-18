@@ -19,7 +19,8 @@ JPAD_P14_OLD :: DS 1        ; Previous state of P14 (direction keys).
 SECTION "JOYPAD", ROMX
 
 ; ------------------------------------------------------------------------------
-; ...
+; Moves the previous joypad state from JPAD_P1x_CUR to JPAD_P1x_OLD and then
+; gets the current joypad state from the system and stores it in JPAD_P1x_CUR.
 ; ------------------------------------------------------------------------------
 
 updatejpad:
