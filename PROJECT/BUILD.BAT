@@ -8,8 +8,8 @@ pushd ..
 if not exist BINARY mkdir BINARY
 pushd SOURCE
 
-..\RGBDS\rgbasm  -o %Object% %Source%
-..\RGBDS\rgblink -o %Output% %Object%
+..\RGBDS\rgbasm  %Define% -o %Object% %Source%
+..\RGBDS\rgblink          -o %Output% %Object%
 ..\RGBDS\rgbfix  -v -p 0 %Output%
 
 del *.O
