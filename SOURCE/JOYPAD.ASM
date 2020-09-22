@@ -33,7 +33,6 @@ updatejpad:
     ld   [hl],a             ; Save the current P15 state.
     ld   hl,JPAD_P15_OLD
     ld   [hl],b             ; Save the previous P15 state.
-
     ld   hl,P1              ; Setup P1 so that we can get retrieve P14 state.
     ld   a,P1_4
     ld   [hl],a             ; Cache the current P14 state in the A register.
