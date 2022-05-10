@@ -1,7 +1,7 @@
-@echo off
-setlocal
+@ECHO off
+SETLOCAL
 
-call PROJINFO.BAT
-start ..\BGBEMU\bgb.exe -watch -rom ..\BINARY\%Output%
+CALL INFO.BAT
+START BGB\bgb.exe -watch -rom BIN\%output%
 
-endlocal
+ENDLOCAL

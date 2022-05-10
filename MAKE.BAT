@@ -1,20 +1,17 @@
-@echo off
-setlocal
+@ECHO off
+SETLOCAL
 
-call PROJINFO.BAT
+CALL INFO.BAT
 
-pushd ..
+IF NOT EXIST BIN MKDIR   BIN
+PUSHD SRC
 
-if not exist BINARY mkdir BINARY
-pushd SOURCE
+..\RGB\rgbasm %define% -o %object% %source%
+..\RGB\rgblink -o %output% %object%
+..\RGB\rgbfix -v -p 0 %output%
 
-..\RGBDS\rgbasm  %Define% -o %Object% %Source%
-..\RGBDS\rgblink          -o %Output% %Object%
-..\RGBDS\rgbfix  -v -p 0 %Output%
+DEL *.O
 
-del *.O
+POPD
 
-popd
-popd
-
-endlocal
+ENDLOCAL

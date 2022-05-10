@@ -1,6 +1,6 @@
-@echo off
+@ECHO off
 
-set Output=..\binary\ISAAC.GB
-set Source=MAIN.ASM
-set Object=MAIN.O
-set Define=-D DEBUG_BUILD
+SET output=..\BIN\TBOI.GB
+SET source=MAIN.ASM
+SET object=MAIN.O
+SET define=-D DEBUG_BUILD
