@@ -1,5 +1,6 @@
 BGB/
 BIN/
+DEV/
 
 *.sublime-project
 *.sublime-workspace
