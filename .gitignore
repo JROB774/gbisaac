@@ -1,4 +1,6 @@
 BGBEMU/
 
+*.sublime-project
 *.sublime-workspace
+
 *.GB

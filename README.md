@@ -19,7 +19,7 @@ the Nintendo Game Boy system.
 
 ## License
 
-The project's code is available under the **[MIT License](https://github.com/JRob774/gbisaac/blob/master/LICENSE)**.
+*Section incomplete...*
 
 *The Binding of Isaac IP and all of its characters are owned by its respective copyright holders and I claim no ownership,
 this is simply a fan project made both for fun and educational purposes.*
