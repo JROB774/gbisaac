@@ -10,10 +10,9 @@ WaitVbl:  LD   A,[R_LY]
           JP   NZ,WaitVbl    ; halt until we're past the screen height
           RET
 ; ------------------------------------------------------------------------------
-; disables the LCD display, it calls WaitVbl first as attempting to turn
-; off the LCD display whilst not in vertical-blank can cause some damage
+; disables the LCD display
 ; ------------------------------------------------------------------------------
-LCDOff:   CALL WaitVbl
+LCDOff:   CALL WaitVbl       ; wait for vblank to avoid hardware damage!
           LD   A,[R_LCDC]
           RES  7,A           ; flag to disable is at bit 7 of LCDC
           LD   [R_LCDC],A
