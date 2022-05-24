@@ -10,8 +10,8 @@ WaitVbl:  LD   A,[R_LY]
           JP   NZ,WaitVbl    ; halt until we're past the screen height
           RET
 ; ------------------------------------------------------------------------------
-; disables the LCD display, which can be used to enable writing into VRAM
-; it calls WaitVbl first as the LCD can only be disabled during a v-blank
+; disables the LCD display, it calls WaitVbl first as attempting to turn
+; off the LCD display whilst not in vertical-blank can cause some damage
 ; ------------------------------------------------------------------------------
 LCDOff:   CALL WaitVbl
           LD   A,[R_LCDC]
@@ -26,7 +26,7 @@ LCDOn:    LD   A,[R_LCDC]
           LD   [R_LCDC],A
           RET
 ; ------------------------------------------------------------------------------
-; disables the audio system, which can be used to help save system power
+; disables the audio system
 ; ------------------------------------------------------------------------------
 SndOff:   LD   A,[R_NR52]
           RES  7,A           ; flag to disable is at bit 7 of NR52
