@@ -5,33 +5,29 @@ CALL CONFIG.BAT
 
 PUSHD ..\..\SRC
 
-IF "%~1"=="tools" GOTO MakeTools
-IF "%~1"=="rom" GOTO MakeROM
-GOTO Error
+:: IF "%~1"=="tools" GOTO MakeTools
+:: IF "%~1"=="rom" GOTO MakeROM
+:: GOTO Error
 
-:MakeTools
-ECHO making tools...
-..\BIN\WIN32\TCC TBOIDRAW.C -I CRT -L CRT -o ..\BIN\WIN32\TBOIDRAW.EXE
-..\BIN\WIN32\TCC TBOIMAP.C -I CRT -L CRT -o ..\BIN\WIN32\TBOIMAP.EXE
-ECHO complete!
-GOTO End
+:: :MakeTools
+..\BIN\WIN32\TCC TBOIDRAW.C -bench -I CRT -L CRT -o ..\BIN\WIN32\TBOIDRAW.EXE
+..\BIN\WIN32\TCC TBOIMAP.C -bench -I CRT -L CRT -o ..\BIN\WIN32\TBOIMAP.EXE
+:: GOTO End
 
-:MakeROM
-ECHO making rom...
+:: :MakeROM
 IF NOT EXIST ..\ROM MKDIR ..\ROM
 ..\BIN\WIN32\RGBASM %define% -o %object% %source%
 ..\BIN\WIN32\RGBLINK -n %output%.SYM -o %output%.GB %object%
 ..\BIN\WIN32\RGBFIX -v -p 0 %output%.GB
 DEL *.O
-ECHO complete!
-GOTO End
+:: GOTO End
 
-:Error
-ECHO please specify an argument for making:
-ECHO rom   : build the rom
-ECHO tools : build dev tools
+:: :Error
+:: ECHO please specify an argument for making:
+:: ECHO rom   : build the rom
+:: ECHO tools : build dev tools
 
-:End
+:: :End
 
 POPD
 ENDLOCAL
