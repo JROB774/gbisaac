@@ -1,21 +1,20 @@
 ; ==============================================================================
 
 SECTION "HEADER", ROM0[ADDRHEAD]
-
-romheader:
 ; ------------------------------------------------------------------------------
-nop                    ; [$0100-$0103] entry point
-jp ADDRMAIN
+Header:
+NOP                    ; [$0100-$0103] entry point
+JP ADDRMAIN
 ; ------------------------------------------------------------------------------
 ; [$0104-$0133] nintendo logo (must match exactly or ROM will fail boot)
 ; ------------------------------------------------------------------------------
-db $CE,$ED,$66,$66,$CC,$0D,$00,$0B,$03,$73,$00,$83,$00,$0C,$00,$0D
-db $00,$08,$11,$1F,$88,$89,$00,$0E,$DC,$CC,$6E,$E6,$DD,$DD,$D9,$99
-db $BB,$BB,$67,$63,$6E,$0E,$EC,$CC,$DD,$DC,$99,$9F,$BB,$B9,$33,$3E
-db "BINDINGISAAC.GB" ; [$0134-$0142] rom title
-db $00               ; [$0143]       CGB flag ($00=GB $C0=CGB $80=GB+CGB)
-dw $0000             ; [$0144-$0145] game manufacturer code
-db $00               ; [$0146]       SGB flag ($00=normal $03=SGB)
+DB $CE,$ED,$66,$66,$CC,$0D,$00,$0B,$03,$73,$00,$83,$00,$0C,$00,$0D
+DB $00,$08,$11,$1F,$88,$89,$00,$0E,$DC,$CC,$6E,$E6,$DD,$DD,$D9,$99
+DB $BB,$BB,$67,$63,$6E,$0E,$EC,$CC,$DD,$DC,$99,$9F,$BB,$B9,$33,$3E
+DB "BINDINGISAAC.GB"   ; [$0134-$0142] rom title
+DB $00                 ; [$0143]       CGB flag ($00=GB $C0=CGB $80=GB+CGB)
+DW $0000               ; [$0144-$0145] game manufacturer code
+DB $00                 ; [$0146]       SGB flag ($00=normal $03=SGB)
 ; ------------------------------------------------------------------------------
 ; [$0147] cartridge type (used to enable extra hardware features)
 ; ------------------------------------------------------------------------------
@@ -33,7 +32,7 @@ db $00               ; [$0146]       SGB flag ($00=normal $03=SGB)
 ; $0F - MBC3+TIMER+BATTERY            $FD - BANDAI TAMA5
 ; $10 - MBC3+TIMER+RAM+BATTERY        $FE - HuC3
 ; $11 - MBC3                          $FF - HuC1+RAM+BATTERY
-db $00
+DB $00
 ; ------------------------------------------------------------------------------
 ; [$0148] ROM size
 ; ------------------------------------------------------------------------------
@@ -43,7 +42,7 @@ db $00
 ; $03 - 256kb (16 banks)              $52 - 1.1mb ( 72 banks)
 ; $04 - 512kb (32 banks)              $53 - 1.2mb ( 80 banks)
 ; $05 -   1mb (64 banks) (63 MBC1)    $54 - 1.5mb ( 96 banks)
-db $00
+DB $00
 ; ------------------------------------------------------------------------------
 ; [$0149] RAM size
 ; ------------------------------------------------------------------------------
@@ -53,12 +52,12 @@ db $00
 ; $03 - 32kb (4 banks of 8kb each)
 ; $04 - 128kb (16 banks of 8kb each)
 ; $05 - 64kb (8 banks of 8kb each)
-db $00
-db $01               ; [$014A]       destination code ($00=JP $01=EU/US)
-db $33               ; [$014B]       old licensee code ($33 for SGB)
-db $00               ; [$014C]       ROM version number
-db $00               ; [$014D]       header checksum
-dw $0000             ; [$014E-$014F] global checksum
+DB $00
+DB $01                 ; [$014A]       destination code ($00=JP $01=EU/US)
+DB $33                 ; [$014B]       old licensee code ($33 for SGB)
+DB $00                 ; [$014C]       ROM version number
+DB $00                 ; [$014D]       header checksum
+DW $0000               ; [$014E-$014F] global checksum
 ; ------------------------------------------------------------------------------
 
 ; ==============================================================================
