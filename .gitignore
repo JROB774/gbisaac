@@ -5,3 +5,5 @@ ROM/
 *.sublime-workspace
 
 *.GB
+
+BIN/**/TBOI*.*
