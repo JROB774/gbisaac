@@ -2,6 +2,6 @@
 SETLOCAL
 
 CALL INFO.BAT
-START BGB\bgb.exe -watch -rom BIN\%output%
+START BGB\bgb.exe -watch -rom BIN\%output%.GB
 
 ENDLOCAL
