@@ -1,6 +1,5 @@
 BGB/
-BIN/
-DEV/
+ROM/
 
 *.sublime-project
 *.sublime-workspace

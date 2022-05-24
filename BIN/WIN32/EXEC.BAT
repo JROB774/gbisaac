@@ -1,0 +1,9 @@
+@ECHO off
+SETLOCAL
+
+CALL CONFIG.BAT
+PUSHD ..\..
+START BGB\BGB -watch -rom ROM\%output%.GB
+POPD
+
+ENDLOCAL
